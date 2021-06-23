@@ -1,0 +1,348 @@
+{
+    "info": {
+        "_postman_id": "67b90cda-c183-4c6a-a2dc-9f85354fbb99",
+        "name": "bookAPI",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "/books",
+            "item": [
+                {
+                    "name": "create",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "pm.test(\"body check\", function () {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.expect(jsonData.name).to.eql(\"name\");",
+                                    "    pm.expect(jsonData.tag).to.eql(\"tag\");",
+                                    "});",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"name\",\n    \"tag\": \"tag\"\n}\n\n",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:1232/books",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "1232",
+                            "path": [
+                                "books"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "get",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "pm.test(\"body check\", function () {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.expect(jsonData.name).to.eql(\"name\");",
+                                    "    pm.expect(jsonData.tag).to.eql(\"tag\");",
+                                    "});",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:1232/books/1000",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "1232",
+                            "path": [
+                                "books",
+                                "1000"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "getall",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:1232/books",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "1232",
+                            "path": [
+                                "books"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "create second",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code\", function () {",
+                                    "    pm.response.to.have.status(201);",
+                                    "});",
+                                    "pm.test(\"body check\", function () {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.expect(jsonData.name).to.eql(\"name2\");",
+                                    "    pm.expect(jsonData.tag).to.eql(\"tag\");",
+                                    "});",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"name2\",\n    \"tag\": \"tag\"\n}\n\n",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:1232/books",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "1232",
+                            "path": [
+                                "books"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "getall with param",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "",
+                                    "pm.test(\"body check\", function () {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.expect(jsonData.length).to.eql(1);",
+                                    "    pm.expect(jsonData[0].name).to.eql(\"name\");",
+                                    "    pm.expect(jsonData[0].tag).to.eql(\"tag\");",
+                                    "});",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:1232/books?limit=1&tags=tag",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "1232",
+                            "path": [
+                                "books"
+                            ],
+                            "query": [
+                                {
+                                    "key": "limit",
+                                    "value": "1"
+                                },
+                                {
+                                    "key": "tags",
+                                    "value": "tag"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "getall with param desc",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "",
+                                    "pm.test(\"body check\", function () {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.expect(jsonData.length).to.eql(1);",
+                                    "    pm.expect(jsonData[0].name).to.eql(\"name2\");",
+                                    "    pm.expect(jsonData[0].tag).to.eql(\"tag\");",
+                                    "});",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:1232/books?limit=1&tags=tag&order=desc",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "1232",
+                            "path": [
+                                "books"
+                            ],
+                            "query": [
+                                {
+                                    "key": "limit",
+                                    "value": "1"
+                                },
+                                {
+                                    "key": "tags",
+                                    "value": "tag"
+                                },
+                                {
+                                    "key": "order",
+                                    "value": "desc"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "amazon",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "pm.test(\"Status code\", function () {",
+                                    "    pm.response.to.have.status(204);",
+                                    "});",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:1232/books/1000",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "1232",
+                            "path": [
+                                "books",
+                                "1000"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "health",
+            "event": [
+                {
+                    "listen": "test",
+                    "script": {
+                        "exec": [
+                            ""
+                        ],
+                        "type": "text/javascript"
+                    }
+                }
+            ],
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:1232/health",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "1232",
+                    "path": [
+                        "health"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}
