@@ -7,9 +7,9 @@ import (
 )
 
 type Book struct {
-	Code      string `gorm:"unique"`
+	Tag       string
 	Name      string
-	Price     int64
+	Price     int
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	IsDelete  soft_delete.DeletedAt `gorm:"softDelete:flag"`

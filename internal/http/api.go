@@ -31,7 +31,9 @@ func (a Api) FindBookById(ctx echo.Context, id gen.ID) error {
 }
 
 func NewApi(db *gorm.DB) *Api {
-	return &Api{}
+	return &Api{
+		books: usecase.NewBook(),
+	}
 }
 
 var _ gen.ServerInterface = (*Api)(nil)
